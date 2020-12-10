@@ -10,27 +10,6 @@ class Node{
         next = NULL;
     }
 };
-
-Node *takeInput(){
-    int data;
-    cout<<"enter the list --> "<<endl;
-    cin>>data;
-    Node *head = NULL;
-    Node *tail = NULL;
-    while(data != -1){
-        Node *n = new Node(data);
-        if(head == NULL){
-            head = n;
-            tail = n;
-        }else{
-            tail->next = n;
-            tail = n;
-        }
-        cin>>data;
-    }
-    return head;
-}
-
 void Print(Node *head){
     Node *temp = head;
     while(temp != NULL){
@@ -41,7 +20,16 @@ void Print(Node *head){
 }
 
 int main(){
-    Node *head = takeInput();
+    Node *n1 = new Node(2);
+    Node *n2 = new Node(4);
+    Node *n3 = new Node(8);
+    Node *n4 = new Node(10);
+    Node *n5 = new Node(12);
+    n1->next = n2;
+    n2->next = n3;
+    n3->next = n4;
+    n4->next = n5;
+    Node *head = n1;
     Print(head);
 
     return 0;
