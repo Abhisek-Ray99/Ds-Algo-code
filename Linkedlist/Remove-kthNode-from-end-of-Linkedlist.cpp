@@ -62,7 +62,7 @@ int main(){
     Node *head = takeInput();
     Print(head);
     cout<<endl;
-    cout<<"enter the node you want to remove : ";
+    cout<<"enter the Kth position of node from the end you want to remove : ";
     int k;
     cin>>k;
     head = removeKthNode(head,k);
