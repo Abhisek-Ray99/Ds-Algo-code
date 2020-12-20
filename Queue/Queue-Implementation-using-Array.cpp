@@ -13,14 +13,14 @@ class Queue{
             capacity = 5;
             arr = new T[capacity];
             nextIndex = 0;
-            firstIndex = 0 ;
+            firstIndex = -1 ;
             size = 0;
         }
         Queue(int cap){
             capacity = cap;
             arr = new T[capacity];
             nextIndex = 0;
-            firstIndex = 0;
+            firstIndex = -1;
             size = 0;
         }
         int getSize(){
