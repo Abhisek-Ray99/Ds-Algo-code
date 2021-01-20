@@ -1,7 +1,8 @@
+// Level Order Traversal in a binary Tree using vector
+
 #include<iostream>
 #include<vector>
 #include<queue>
-#include<algorithm>
 using namespace std;
 
 template<typename T>
@@ -61,29 +62,30 @@ void PrintBT(BTNode<int> *root){
     PrintBT(root->right);
 }
 
-void reverseLevelOrder(BTNode<int> *root){
+vector<int> PrintLevelOrder(BTNode<int> *root){
     vector<int> ans;
-    if(!root) return;
+    if(!root) return ans;
     queue<BTNode<int>* > q;
     q.push(root);
     while(!q.empty()){
         BTNode<int> *f = q.front();
         q.pop();
         ans.push_back(f->data);
-        if(f->right) q.push(f->right);
         if(f->left) q.push(f->left);
+        if(f->right) q.push(f->right);
     }
-    reverse(ans.begin(),ans.end());
-    for(int i=0; i<ans.size(); i++){
-        cout<<ans[i]<<" ";
-    }
+    return ans;
 }
 
 int main(){
     BTNode<int> *root = takeInput();
     PrintBT(root);
-    cout<<"\nThe reverse Level Order Traversal is : ";
-    reverseLevelOrder(root);
+
+    cout<<"\nThe level Order Traversal of Binary Tree is : ";
+    vector<int> result = PrintLevelOrder(root);
+    for(int i=0; i<result.size(); i++){
+        cout<<result[i]<<" ";
+    }
 
     return 0;
 }
