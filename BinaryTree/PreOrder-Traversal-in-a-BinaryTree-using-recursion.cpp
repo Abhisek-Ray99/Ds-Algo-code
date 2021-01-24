@@ -61,18 +61,18 @@ void PrintBT(BTNode<int> *root){
     PrintBT(root->right);
 }
 
-void inOrder(BTNode<int> *root){
+void preOrder(BTNode<int> *root){
     if(root == NULL) return;
     cout<<root->data<<" ";
-    inOrder(root->left);
-    inOrder(root->right);
+    preOrder(root->left);
+    preOrder(root->right);
 }
 
 int main(){
     BTNode<int> *root = takeInput();
     PrintBT(root);
     cout<<"The PreOrder Traversal of Binary Tree is : ";
-    inOrder(root);
+    preOrder(root);
 
     return 0;
 }
