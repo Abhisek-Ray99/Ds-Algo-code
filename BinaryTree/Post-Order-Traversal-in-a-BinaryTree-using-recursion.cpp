@@ -61,7 +61,7 @@ void PrintBT(BTNode<int> *root){
     PrintBT(root->right);
 }
 
-void inOrder(BTNode<int> *root){
+void postOrder(BTNode<int> *root){
     if(root == NULL) return;
     inOrder(root->left);
     inOrder(root->right);
@@ -71,8 +71,8 @@ void inOrder(BTNode<int> *root){
 int main(){
     BTNode<int> *root = takeInput();
     PrintBT(root);
-    cout<<"The PostOrder Traversal of Binary Tree is : ";
-    inOrder(root);
+    cout<<"\nThe PostOrder Traversal of Binary Tree is : ";
+    postOrder(root);
 
     return 0;
 }
