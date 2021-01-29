@@ -1,4 +1,4 @@
-// Find mix value in Binary Search Tree
+// Find max value in Binary Search Tree
 
 #include<iostream>
 using namespace std;
