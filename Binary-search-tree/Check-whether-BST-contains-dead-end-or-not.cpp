@@ -73,7 +73,5 @@ int main(){
 
     (b.isDeadEnd() == 1) ? cout<<"yes !! BST contains Dead end"
                          : cout<<"No !! BST does contains Dead end";     
-
-
     return 0;
 }
