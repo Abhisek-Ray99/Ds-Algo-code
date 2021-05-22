@@ -5,7 +5,7 @@ using namespace std;
 
 vector<int> findbfs(vector<int> adj[], int v){
     vector<int> bfs;
-    vector<int> vis(v+1);
+    vector<int> vis(v+1,0);
     for(int s=0; s<=v; s++){
         if(!vis[s]){
             queue<int> q;
