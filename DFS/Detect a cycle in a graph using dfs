@@ -1,0 +1,47 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+bool detectCycle(int node,int parent,vector<int> adj[], vector<int> &vis){
+    vis[node] = 1;
+    for(auto it: adj[node]){
+        if(!vis[it]){
+            if(detectCycle(it,node,adj,vis)){
+                return true;
+            }
+        }else if(it != parent){
+            return true;
+        }
+    }
+    return false;
+}
+
+bool findCycle(int v,vector<int> adj[]){
+    vector<int> vis(v+1,0);
+    for(int s=0; s<=v; s++){
+        if(!vis[s]){
+            if(detectCycle(s,-1,adj,vis)){
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+int main(){
+    int n,m;
+    cout<<"Enter the number of vertices & edges : ";
+    cin>>n>>m;
+    vector<int> adj[n+1];
+    for(int s=0; s<m; s++){
+        int u,v;
+        cout<<"Enter u & v: ";
+        cin>>u>>v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+
+    cout<<findCycle(n,adj);
+
+    return 0;
+}
