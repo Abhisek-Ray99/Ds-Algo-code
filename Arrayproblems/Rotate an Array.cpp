@@ -1,7 +1,7 @@
 //Brute force approch
 
 
-//rotate an array from left to right
+//rotate an array from left to right(anit clock wise)
 #include<iostream>
 #include<vector>
 using namespace std;
@@ -30,7 +30,7 @@ int main(){
 
 
 
-//rotate an array from right to left
+//rotate an array from right to left(clock wise)
 #include<iostream>
 #include<vector>
 using namespace std;
