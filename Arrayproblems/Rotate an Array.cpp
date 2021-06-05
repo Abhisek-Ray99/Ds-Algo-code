@@ -1,7 +1,7 @@
 //Brute force approch
 
 
-//rotate an array from left to right(anit clock wise)
+//rotate an array from left to right(anti clock wise)
 #include<iostream>
 #include<vector>
 using namespace std;
@@ -52,6 +52,42 @@ int main(){
     nums = rotatenums(nums,k);
     for(int s=0; s<nums.size(); s++){
         cout<<nums[s]<<" ";
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+// Optimised solution o(n) and o(1)  //left to right(clock wise)
+#include<iostream>
+using namespace std;
+
+void reverse(int arr[],int s,int e){
+    while(s < e){
+        swap(arr[s],arr[e]);
+        s++;
+        e--;
+    }
+}
+
+void rotate_arr(int arr[],int d,int n){
+    if(d > n) d = d % n;
+    reverse(arr, 0, n-(n-d)-1);
+    reverse(arr, n-(n-d), n-1);
+    reverse(arr, 0, n-1);
+}
+
+int main(){
+    int arr[] = {2,4,6,8,10,12,14,16,18,20};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int d = 3;
+    rotate_arr(arr,d,n);
+    for(int i=0; i<n; i++){
+        cout<<arr[i]<<" ";
     }
 
     return 0;
