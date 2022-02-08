@@ -1,3 +1,5 @@
+// -------------------------------------------------------First Method------------------------------------------------------🎃
+
 #include<iostream>
 #include<queue>
 using namespace std;
@@ -71,6 +73,79 @@ int main(){
     PrintBT(root);
     int height = findHeight(root);
     cout<<"The height of the binary tree is : "<<height;
+
+    return 0;
+}
+
+
+
+
+// --------------------------------------------------------Another method---------------------------------------------------------
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+class Node{
+    public:
+        int data;
+        Node *left;
+        Node *right;
+        Node(int data){
+            this->data = data;
+            left = NULL;
+            right = NULL;
+        }
+};
+
+void printTree(Node *root){
+    if(root == NULL) return;
+    cout<<root->data<<": ";
+    if(root->left){
+        cout<<"L-> "<<root->left->data<<" ";
+    }
+    if(root->right){
+        cout<<"R-> "<<root->right->data<<" ";
+    }
+    cout<<endl;
+    printTree(root->left);
+    printTree(root->right);
+}
+
+int heightofBinaryTree(Node *root){
+    if(root == NULL){
+        return 0;
+    }
+    int maxHeight = 1;
+    if(root->left != NULL){
+        int height = 1 + heightofBinaryTree(root->left); 
+        if(height >= maxHeight) maxHeight = height;
+    }
+    if(root->right != NULL){
+        int height = 1 + heightofBinaryTree(root->right);
+        if(height >= maxHeight) maxHeight = height;
+    }
+    return maxHeight;
+}
+
+int main(){
+    Node *n1 = new Node(3);
+    Node *n2 = new Node(2);
+    Node *n3 = new Node(5);
+    Node *n4 = new Node(1);
+    Node *n5 = new Node(4);
+    Node *n6 = new Node(6);
+    Node *root = n1;
+    n1->left = n2;
+    n1->right = n3;
+    n2->left = n4;
+    n3->left = n5;
+    n3->right = n6;
+    printTree(root);
+    int height = heightofBinaryTree(root);
+    cout<<"height: "<<height;
+
 
     return 0;
 }
