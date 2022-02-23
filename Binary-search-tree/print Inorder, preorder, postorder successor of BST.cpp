@@ -16,6 +16,8 @@ class TreeNode{
 class BST{
     TreeNode *root;
     vector<int> inorder;
+    vector<int> preorder;
+    vector<int> postorder;
     TreeNode *insert(TreeNode *root, int node){
         if(root == NULL){
             TreeNode *newnode = new TreeNode(node);
@@ -43,6 +45,18 @@ class BST{
         inorder.push_back(root->data);
         getInorder(root->right);
     }
+    void getPreorder(TreeNode *root){
+        if(root == NULL) return;
+        preorder.push_back(root->data);
+        getPreorder(root->left);
+        getPreorder(root->right);
+    }
+    void getPostorder(TreeNode *root){
+        if(root == NULL) return;
+        getPostorder(root->left);
+        getPostorder(root->right);
+        postorder.push_back(root->data);
+    }
     public:
         BST(){
             root = NULL;
@@ -57,6 +71,14 @@ class BST{
             getInorder(root);
             for(auto it:inorder) cout<<it<<" ";
         }
+        void printPreorder(){
+            getPreorder(root);
+            for(auto it:preorder) cout<<it<<" ";
+        }
+        void printPostorder(){
+            getPostorder(root);
+            for(auto it:postorder) cout<<it<<" ";
+        }
 };
 
 int main(){
@@ -70,6 +92,10 @@ int main(){
     b.insert(24);
     b.printBST();
     b.printInorder();
+    cout<<endl;
+    b.printPreorder();
+    cout<<endl;
+    b.printPostorder();
 
     return 0;
 }
