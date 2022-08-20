@@ -70,6 +70,38 @@ Node *reverseLL(Node *head, int n){
     return newHead;
 }
 
+--------------------------------------or --------------------------------------
+  node *reverse (node *head, int k)
+    { 
+        // Complete this method
+        node *curr = head;
+        node *prev = NULL;
+        node *nxt = NULL;
+        
+        node *newhead = NULL;
+        node *join = NULL;
+        node *tail = NULL;
+        
+        while(curr != NULL){
+            join = curr;
+            int count = 1;
+            prev = NULL;
+            while(curr != NULL && count <= k){
+                nxt = curr->next;
+                curr->next = prev;
+                prev = curr;
+                curr = nxt;
+                count++;
+            }
+            if(newhead == NULL) newhead = prev;
+            if(tail != NULL) tail->next = prev;
+            tail = join;
+        }
+        return newhead;
+    }
+
+-------------------------------------------------------------------
+
 int main(){
     Node *head = takeInput();
     cout<<"The initial list is : ";
